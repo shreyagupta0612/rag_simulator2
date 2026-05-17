@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siya Gupta | Futuristic Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050816;
+      --card: rgba(17, 25, 40, 0.75);
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: #b6c2d9;
+      --primary: #7c5cff;
+      --secondary: #00e0ff;
+      --glow: 0 0 25px rgba(124, 92, 255, 0.45);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #111c44 0%, #050816 40%, #02040d 100%);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -2;
+    }
+
+    .orb {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.3;
+      z-index: -1;
+      animation: float 10s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      background: #7c5cff;
+      top: -50px;
+      left: -50px;
+    }
+
+    .orb.two {
+      background: #00e0ff;
+      bottom: 0;
+      right: -50px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0px) translateX(0px);
+      }
+      to {
+        transform: translateY(20px) translateX(30px);
+      }
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1300px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .sidebar {
+      padding: 32px;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: var(--glow);
+      position: relative;
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.1); opacity: 0; }
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .tagline {
+      color: var(--secondary);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .bio {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 18px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 18px;
+      margin-top: 32px;
+      font-weight: 700;
+    }
+
+    .contact-item,
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.03);
+      transition: 0.3s ease;
+    }
+
+    .contact-item:hover,
+    .skill-item:hover,
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(124,92,255,0.4);
+      box-shadow: var(--glow);
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(124,92,255,0.25), rgba(0,224,255,0.25));
+      font-size: 16px;
+    }
+
+    .contact-item span,
+    .skill-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero {
+      padding: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(124,92,255,0.2), transparent 70%);
+      top: -100px;
+      right: -50px;
+    }
+
+    .hero h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      max-width: 800px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--secondary), #ffffff, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 760px;
+      font-size: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-card h3 {
+      font-size: 28px;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .stat-card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      padding: 28px;
+      transition: 0.3s ease;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 5px;
+      width: 2px;
+      height: 100%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 26px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 15px var(--secondary);
+    }
+
+    .timeline-item h4 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .timeline-item small {
+      color: var(--secondary);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chip {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(124,92,255,0.15);
+      border: 1px solid rgba(124,92,255,0.25);
+      color: white;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    .chip:hover {
+      transform: scale(1.05);
+      background: rgba(0,224,255,0.15);
+      border-color: rgba(0,224,255,0.35);
+    }
+
+    .project {
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .project h4 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .project p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      padding: 10px;
+      font-size: 13px;
+    }
+
+    button {
+      margin-top: 28px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: var(--glow);
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    @media (max-width: 1100px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        top: 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero,
+      .card,
+      .sidebar {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .hero h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+
+  <div class="container">
+
+    <aside class="sidebar glass">
+      <div class="profile">
+        <div class="avatar">SG</div>
+        <h1>Siya Gupta</h1>
+        <div class="tagline">AI + Product Thinking</div>
+        <p class="bio">
+          Curious builder exploring the intersection of AI, APIs, RAG systems, product strategy, and futuristic user experiences.
+        </p>
+      </div>
+
+      <div>
+        <div class="section-title">Contact</div>
+
+        <div class="contact-item">
+          <div class="icon">📍</div>
+          <span>Bangalore, India</span>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">✉️</div>
+          <span>yourmail@example.com</span>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">💼</div>
+          <span>linkedin.com/in/yourprofile</span>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">🚀</div>
+          <span>github.com/yourgithub</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">Core Skills</div>
+
+        <div class="skill-item">
+          <div class="icon">🧠</div>
+          <span>AI & Prompt Engineering</span>
+        </div>
+
+        <div class="skill-item">
+          <div class="icon">⚡</div>
+          <span>Product Thinking & PRDs</span>
+        </div>
+
+        <div class="skill-item">
+          <div class="icon">🔍</div>
+          <span>RAG & Vector Embeddings</span>
+        </div>
+
+        <div class="skill-item">
+          <div class="icon">🌐</div>
+          <span>APIs & System Understanding</span>
+        </div>
+      </div>
+
+      <button onclick="window.print()">Download Resume</button>
+    </aside>
+
+    <main class="main">
+
+      <section class="hero glass">
+        <h2>
+          Designing the future with
+          <span class="gradient">AI, Product Strategy & Human-Centered Innovation</span>
+        </h2>
+
+        <p>
+          Passionate about understanding how intelligent systems work internally — from APIs and vector embeddings to retrieval systems and futuristic user experiences. Constantly exploring how technology can simplify human problems through thoughtful product design and modern interfaces.
+        </p>
+
+        <div class="stats">
+          <div class="stat-card">
+            <h3>AI</h3>
+            <p>Exploring RAG, APIs, Prompting & Modern AI Workflows</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>PM</h3>
+            <p>Structured PRDs, User Insights & Product Thinking</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>UX</h3>
+            <p>Futuristic Interfaces & Human-Centered Experiences</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+
+        <div class="card glass">
+          <h3>Experience & Exploration</h3>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <h4>AI Product Explorer</h4>
+              <small>2025 — Present</small>
+              <p>
+                Deeply exploring APIs, AI systems, RAG architecture, vector embeddings, and prompt engineering while building conceptual understanding of intelligent applications.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Product Strategy Practice</h4>
+              <small>Case Studies & PRDs</small>
+              <p>
+                Worked on structured PRDs, user journey mapping, assumptions, guardrails, metrics, and scalable product thinking inspired by modern tech ecosystems.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Frontend Creative Experiments</h4>
+              <small>HTML • CSS • JavaScript</small>
+              <p>
+                Built futuristic UI concepts, interactive simulations, and visually immersive web experiences to understand product storytelling through design.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card glass">
+          <h3>Tech Stack & Strengths</h3>
+
+          <div class="skills-grid">
+            <div class="chip">Artificial Intelligence</div>
+            <div class="chip">RAG Systems</div>
+            <div class="chip">Vector Embeddings</div>
+            <div class="chip">Prompt Engineering</div>
+            <div class="chip">API Fundamentals</div>
+            <div class="chip">Product Strategy</div>
+            <div class="chip">User Research</div>
+            <div class="chip">PRD Writing</div>
+            <div class="chip">HTML</div>
+            <div class="chip">CSS</div>
+            <div class="chip">JavaScript</div>
+            <div class="chip">Design Thinking</div>
+            <div class="chip">Futuristic UI</div>
+            <div class="chip">Creative Problem Solving</div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="card glass">
+        <h3>Highlighted Projects</h3>
+
+        <div class="project">
+          <h4>RAG Learning Simulator</h4>
+          <p>
+            Designed an interactive HTML-only simulator to visually explain how Retrieval-Augmented Generation works — including chunking, embeddings, vector search, retrieval, and LLM response flow.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>Futuristic Resume Experience</h4>
+          <p>
+            Created immersive personal branding interfaces using advanced CSS effects, glassmorphism, motion, and futuristic layouts to transform traditional resumes into engaging digital experiences.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>AI Product Research & PRDs</h4>
+          <p>
+            Structured feature documentation including objectives, user insights, assumptions, metrics, edge cases, dependencies, and rollout strategy for modern AI-driven product ideas.
+          </p>
+        </div>
+      </section>
+
+      <section class="card glass">
+        <h3>About Me</h3>
+
+        <p style="color: var(--muted); line-height: 1.9; font-size: 15px;">
+          I enjoy breaking down complex technologies into understandable systems. My interests revolve around AI products, modern user experiences, product thinking, and the future of human-computer interaction. I love learning by building — whether it's understanding APIs internally, designing futuristic interfaces, or creating conceptual AI simulations.
+        </p>
+      </section>
+
+      <div class="footer">
+        Built with HTML, CSS & JavaScript • Futuristic Resume Experience
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.glass');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+
+      cards.forEach((card) => {
+        const rotateY = (x - 0.5) * 4;
+        const rotateX = (0.5 - y) * 4;
+
+        card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cards.forEach((card) => {
+        card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+  </script>
+
+</body>
+</html>
